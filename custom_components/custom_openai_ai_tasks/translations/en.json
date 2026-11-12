@@ -1,0 +1,84 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Custom OpenAI AI Tasks",
+        "description": "Enter your OpenAI-compatible server URL, API key, and model(s). At least one model must be configured. The URL may be the server root (http://host:8000) or include /v1 - requests go to /v1/chat/completions with Bearer auth.",
+        "data": {
+          "name": "Name",
+          "endpoint": "OpenAI-compatible endpoint URL (e.g. http://192.168.1.79:8000)",
+          "api_key": "API Key",
+          "chat_model": "Chat Model (optional)",
+          "image_model": "Image Model (optional)"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure Custom OpenAI AI Tasks",
+        "description": "Update your OpenAI-compatible server URL, API key, and model(s). At least one model must be configured. The URL may be the server root (http://host:8000) or include /v1.",
+        "data": {
+          "name": "Name",
+          "endpoint": "OpenAI-compatible endpoint URL (e.g. http://192.168.1.79:8000)",
+          "api_key": "API Key",
+          "chat_model": "Chat Model (optional)",
+          "image_model": "Image Model (optional)"
+        }
+      }
+    },
+    "error": {
+      "unknown": "Unexpected error occurred",
+      "cannot_connect": "Failed to connect - check the endpoint URL and API key",
+      "no_models_configured": "At least one model (chat or image) must be configured"
+    },
+    "abort": {
+      "already_configured": "Device is already configured",
+      "reconfigure_successful": "Reconfiguration was successful"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Custom OpenAI AI Tasks Options",
+        "description": "Configure your preferred models. At least one model must be configured.",
+        "data": {
+          "chat_model": "Chat Model (optional)",
+          "image_model": "Image Model (optional)"
+        }
+      }
+    },
+    "error": {
+      "no_models_configured": "At least one model (chat or image) must be configured"
+    }
+  },
+  "issues": {
+    "migrate_downgrade": {
+      "title": "Custom OpenAI AI Tasks cannot read its saved configuration",
+      "description": "The saved configuration for \"{title}\" was written by a newer version of Custom OpenAI AI Tasks (version {entry_version}); this version understands up to version {supported_version}. This usually means Custom OpenAI AI Tasks was downgraded. Update it back to the newer version, or remove and re-add the integration."
+    },
+    "migrate_incomplete_config": {
+      "title": "Custom OpenAI AI Tasks needs its endpoint and API key again",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Retry the Custom OpenAI AI Tasks update",
+            "description": "\"{title}\" has no endpoint or API key saved, so it could not finish updating. Reconfigure it first (Settings > Devices & Services > Custom OpenAI AI Tasks > Configure), then submit this to try again."
+          }
+        }
+      }
+    },
+    "migrate_incomplete_config_restart": {
+      "title": "Custom OpenAI AI Tasks needs its endpoint and API key again",
+      "description": "\"{title}\" has no endpoint or API key saved, so Custom OpenAI AI Tasks could not finish updating it. Reconfigure it (Settings > Devices & Services > Custom OpenAI AI Tasks > Configure), then restart Home Assistant to finish the update."
+    }
+  },
+  "exceptions": {
+    "migrate_downgrade": {
+      "message": "The saved configuration for \"{title}\" is version {entry_version}, but this version of Custom OpenAI AI Tasks only understands up to version {supported_version}."
+    },
+    "migrate_incomplete_config": {
+      "message": "\"{title}\" has no endpoint or API key saved, so it could not finish updating."
+    },
+    "migrate_transient": {
+      "message": "Could not save the updated Custom OpenAI AI Tasks configuration; this will be retried."
+    }
+  }
+}
